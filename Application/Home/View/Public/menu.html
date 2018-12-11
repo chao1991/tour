@@ -1,0 +1,44 @@
+<div class="newrank_menu" ng-controller='menuController' id="menu" name='menu'>
+<div class="menu_top">
+	<a href="#/" class="menu_top_first"><span>首页</span></a>
+	<a href="#/list"><span >榜单</span></a>
+	<a href="#/advertisement"><span>广告任务</span></a>
+	<div class="menu_top_last"><img src="__PUBLIC__/img/menu/icon-Sign-in.png">登录</div>
+	<div class="clear-fix"></div>
+</div>
+<div class="menu_bottom">
+    <div class="menu_bottom_next">
+	  <span class="menu_bottom_first ad-task" ng-class="{0: 'active'}[choosetype]" ng-click='typeChoose(0)' >主播</span>
+	  <span class="ad-task" ng-class="{1: 'active'}[choosetype]" ng-click='typeChoose(1)' >广告任务</span></br>
+
+	  <div class="searchbox">
+	  	<div class="searchbox1">
+	  	<form action="javascript:return true;">
+	  		<input id="search_input" type="search" name='search' ng-if='choosetype==0' placeholder="请输入主播名称" ng-keyup="searchUp($event)">
+	  		<input id="search_input" type="search" name='search' ng-if='choosetype==1' placeholder="请输入广告任务" ng-keyup="searchUp($event)">
+	  	</form>
+	  		<div>
+	           <button ng-click='searchTab()'></button>
+	        </div>
+	  	</div>
+	  </div>
+    </div>
+</div>
+
+<div class="logo">
+</div>
+<div id="logo_pic">
+    <a href="/index.php/Home/User/index.html#/">
+    <img src="__PUBLIC__/img/menu/logo.png">
+    </a>
+</div>
+</div>
+<script>
+	$(".menu_top_last").on("mouseover",function(){
+		$(this).children('img').attr('src','__PUBLIC__/img/menu/icon-Sign-in-hover.png');
+	});
+		$(".menu_top_last").on("mouseout",function(){
+		$(this).children('img').attr('src','__PUBLIC__/img/menu/icon-Sign-in.png');
+	})
+</script>
+

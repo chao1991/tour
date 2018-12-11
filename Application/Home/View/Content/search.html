@@ -1,0 +1,53 @@
+<div id="search_page">
+    <div class="newrank_container">
+    	<div class="search_result" ng-if='showResult'>
+    		<p>关键词“{{search}}”，共找到<span>{{searchCount}}</span>条结果</p>
+    		<p>相关分类：娱乐</p>
+    		<div class="search_result_boxes" ng-repeat='list in searchbox'>
+    			<div class="search_result_box">
+    				<div class="anchor_head">
+    					<a href="#/information/{{list.room_id}}/{{list.platform}}"><img src='{{list.face}}'></a>
+    				</div>
+    				<div class="anchor_details">
+    					<div class="detail_name"><a href="#/information/{{list.room_id}}/{{list.platform}}">{{list.nickname}}</a></div>
+    					<div class="detail_type">{{list.sort}}</div>
+    					<div class="detail_label">
+    						<div ng-show="list.game_name">{{list.game_name}}</div>
+    					</div>
+    				</div>
+    				<div class="anchor_fans">
+    					<p>粉丝数</p>
+    					<div>{{list.avgFans}}</div>
+    				</div>
+    			</div>
+    		</div>
+            <div class="page_turning">
+                <div id="search-page">
+                	
+                </div>
+            </div>
+    	</div>
+        <div class='search_result' ng-if='showResult==false'>
+            <p style='margin-top: 50px'>抱歉，没有符合您搜索条件的结果，请换其他关键词再试。</p>
+        </div>
+    	<div class="search_hot">
+    		<h1>热搜</h1>
+    		<div class="hot_lists" >
+    			<div class="hot_list" ng-repeat='hot in hotsearch'>
+    				<div class='hot_rank'>{{ $index +1 }}</div>
+    				<div class='hot_type'>{{hot.sort}}</div>
+    				<div class="hot_percentage">
+    					<div style='width:{{hot.barwidth}}%'></div>
+    				</div>
+    				<div class="clearfix"></div>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="clearfix"></div>
+    </div>
+</div>
+<div class='loading'><img src="__PUBLIC__/img/list/loading.gif"></div>
+
+<script type="text/javascript">
+ 
+</script>

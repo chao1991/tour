@@ -1,0 +1,144 @@
+<div id="list_part" >
+<div id="list_title">
+    <div class="newrank_container">
+      	<div class="list_type">
+		    <span ng-click='dayRanking()'>日榜</span>
+		    <span ng-click='weekRanking()'>周榜</span>
+		    <span style="margin-right:0px;" ng-click='monthRanking()'>月榜</span>
+		</div>
+		<div class="choose_link">
+			<img id="day_link" src="__PUBLIC__/img/list/line-red.png">
+		</div>
+		<div class="cut_off">	
+		</div>
+		<div class="time_detail " id="daily_time">
+			<span class="span_color" ng-click='dayChoose(c,-1)' ng-mouseover="dayChoose(c,-1)">{{c}}</span>
+			<span ng-click='dayChoose(d,0)' ng-mouseover="dayChoose(d,0)">{{d}}</span>
+			<span ng-click='dayChoose(e,1)' ng-mouseover="dayChoose(e,1)">{{e}}</span>
+			<span ng-click='dayChoose(f,2)' ng-mouseover="dayChoose(f,2)">{{f}}</span>
+			<span ng-click='dayChoose(g,3)' ng-mouseover="dayChoose(g,3)">{{g}}</span>
+			<span ng-click='dayChoose(h,4)' ng-mouseover="dayChoose(h,4)">{{h}}</span>
+			<span style="margin-right:0px;" ng-click='dayChoose(i,5)' ng-mouseover="dayChoose(i,5)">{{i}}</span>
+		</div>
+		<div class="time_detail " id="weekly_time" style="display:none;">
+			<span class="span_color" ng-click='weekChoose(c,6)' ng-mouseover="weekChoose(c,6)">{{i}}~{{c}}</span>
+			<span ng-click='weekChoose(i,12)' ng-mouseover="weekChoose(i,12)">{{j}}~{{i}}</span>
+			<span style="margin-right:0px;" ng-click='weekChoose(j,18)' ng-mouseover="weekChoose(j,18)">{{k}}~{{j}}</span>
+		</div>
+		<div class="time_detail " id="month_time" style="display:none;">
+			<span class="span_color" ng-click='monthChoose(l,1)' ng-mouseover="monthChoose(l,1)">{{l}}月</span>
+			<span ng-click='monthChoose(m,2)' ng-mouseover="monthChoose(m,2)">{{m}}月</span>
+			<span style="margin-right:0px;" ng-click='monthChoose(n,3)' ng-mouseover="monthChoose(n,3)">{{n}}月</span>
+		</div>
+    </div>
+</div>
+<div id="list_content">
+    <div class="newrank_container">
+    	<div class="list_left">
+    		<div class='list-collapse'>
+                <div class='collapse-family collapsed'>
+                    <div class='collapse-parent'><img src={{nav.face}}>{{nav.sort}}</div>
+                    <div class='collapse-children'  ng-repeat='list in nav.detail'>
+                        <div class='collapse-child' data-ng-class="{'active':  $index <1}" ng-click='kindChoose(list.name_new,$event,list.name_new)'>{{list.name_new}}</div>
+                        <div class='collapse-line'></div>
+                    </div>
+                </div>
+                <div class='collapse-family collapse-family1' ng-repeat='list in chooses'>
+                    <div class='collapse-parent collapse-parent1'><img src={{list.face}}>{{list.sort}}</div>
+                    <div class='collapse-children' ng-repeat='chooice in list.detail'>
+                        <div class='collapse-child' ng-click='kindChoose(chooice.name_new,$event,chooice.name_new)'>{{chooice.name_new}}</div>
+                        <div class='collapse-line'></div>
+                    </div>
+                </div>
+            </div>
+    	</div>
+    	<div class="list_right">
+    		<!-- <img id="element_logo" src="__PUBLIC__/img/list/image10.png"> -->
+            <img id="element_logo" src="__PUBLIC__/img/list/lists/%E6%B8%B8%E6%88%8F-game-big.png">
+            <!-- http://rank.dataguiding.com/Public/img/list/lists/%E6%B8%B8%E6%88%8F-game-big.png -->
+    		<p id="element_name">直播</p>
+    		<div class="clearfix"></div>
+    		<table>
+    		  <tbody>
+    			<tr class="list_title">
+            		<th>排名</th>
+            		<th>主播</th>
+            		<th>最高观看数</th>
+            		<th>直播时长</th>
+            		<th>直播次数</th>
+            		<th>粉丝数</th>
+            		<th>所属平台</th>
+            		<th>加入收藏</th>
+            	</tr>
+            	<tr class="list_body" ng-repeat='list in platforms'>
+            		<th>{{ $index +1 }}</th>
+            		<th><a href="#/information/{{list.room_id}}/{{list.platform}}">{{list.nickname}}</a></th>
+            		<th>{{list.max_online}}</th>
+            		<th>{{list.duration}}小时</th>
+            		<th>{{list.times}}</th>
+            		<th>{{list.ave_fans}}</th>
+            		<th>{{list.platform_c}}</th>
+            		<th class="imgs"></th>
+                    <!-- <img src="__PUBLIC__/img/list/icon-Collect.png"> -->
+            	</tr>
+              </tbody>
+    		</table>
+    		<table id="secondtable" style="display:none;">
+    		  <tbody>
+    			<tr class="list_body" ng-repeat='list in anotherplatforms'>
+            		<th>{{ $index +21 }}</th>
+            		<th><a href="#/information/{{list.room_id}}/{{list.platform}}">{{list.nickname}}</a></th>
+            		<th>{{list.max_online}}</th>
+            		<th>{{list.duration}}小时</th>
+            		<th>{{list.times}}</th>
+            		<th>{{list.ave_fans}}</th>
+            		<th>{{list.platform}}</th>
+            		<th class="imgs"></th>
+            	</tr>
+    		   </tbody>
+    		</table>
+    		<div class="more_thirty">
+    			<p ng-click='showMore()' id="show_more" class="show_more" style="cursor:pointer;">点击显示剩余30条信息<img src="__PUBLIC__/img/list/down.png"></p>
+    			<p ng-click='showMore()' id="show_less" class="show_less" style="display:none;cursor:pointer;">收起<img src="__PUBLIC__/img/list/up.png"></p>
+    		</div>
+    	</div>
+    	<div class="clearfix"></div>
+    </div>
+</div>
+</div>
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        //左侧折叠
+        $('.list-collapse').on('click','.collapse-parent',function(){
+            var parent = $(this);
+            var uncle = parent.parent('.collapse-family').siblings('.collapse-family');
+            if(parent.parent('.collapse-family').hasClass('collapsed')){
+                //已经展开
+                parent.siblings('.collapse-children').slideUp();
+                parent.parent('.collapse-family').removeClass('collapsed');
+            }else{
+                uncle.children('.collapse-children').slideUp();
+                uncle.removeClass('collapsed');
+                parent.siblings('.collapse-children').slideDown();
+                parent.parent('.collapse-family').addClass('collapsed');
+            }           
+        });
+
+        //$('.list-collapse .collapse-family').eq(1).children('.collapse-parent').trigger('click');
+
+       $(".list_right").on("click",".imgs",function(){
+            $(this).removeClass("imgs").addClass("imgsStyle");
+       });
+
+       if($(".collapse-child").html()=="英雄联盟"){
+
+       }
+
+       $("#list_content .collapse-family1:eq(0) .collapse-children:eq(6) .collapse-child").css("color","#fc4e53");
+    })
+
+</script>

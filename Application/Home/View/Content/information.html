@@ -1,0 +1,54 @@
+
+    <div class="anchor_information">
+    	<div class="newrank_container">
+    		<div class="information_upper">
+    			<div class="information_pic">
+    				<img src="{{info.headimg}}">
+    			</div>
+    			<div class="information_type">
+    				<div class="type_name" ng-bind="info.nickname"></div>
+    				<img src="__PUBLIC__/img/information/Not collected.png">
+    				<p class="type_addtime">加入榜单时间：<span ng-bind="info.time"></span></p>
+    				<div class="type_detail">
+    					<div class="type_detail_fans">
+    						<p class="type_detail_fan">粉丝数</p>
+    						<p class="number" ng-bind="info.maxfans">8065</p>
+    					</div>
+    					<div class="type_detail_rank">
+    						<p>排名</p>
+    						<p class="number" ng-bind="info.top"></p>
+    					</div>
+    					<div class="clearfix"></div>
+    				</div>
+    			</div>
+    			<div class="gray_line"></div>
+    			<div class="information_detail">
+    				<div class="detail1">分类</div>
+    				<div class="detail2" ng-bind="info.type"></div>
+    				<div class="detail3">标签</div>
+                    <div class="detail2" ng-if="info.tags==null">无</div>
+    				<div class="detail4" ng-if="info.tags">
+    					<div>{{list.tags}}</div>
+    				</div>
+    			</div>
+    			<div class="gray_line"></div>
+    			<div class="platform">
+    				<div class="detail1">所属平台</div>
+    				<div class="detail2" ng-bind="info.platform_c"></div>
+    			</div>
+    		</div>
+    		<div class="information_lower">
+    			<div class="lower_title">
+    				<span class='active' ng-mouseover="showFans($event)" ng-click="showFans($event)">粉丝量<span class='up-triangle'></span></span>
+		            <span ng-mouseover="showLive($event)" ng-click="showLive($event)">直播时长<span class='up-triangle'></span></span>
+		            <span style='margin-right:0px;' ng-mouseover="showAudience($event)" ng-click="showAudience($event)">观看人数<span class='up-triangle'></span></span>
+    			</div>
+    			<div class="cut_off">	
+		        </div>
+    		</div>
+    		<div id="information_chart">
+    			
+    		</div>
+    	</div>
+    </div>
+    <div class='loading'><img src="__PUBLIC__/img/list/loading.gif"></div>

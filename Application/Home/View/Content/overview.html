@@ -1,0 +1,292 @@
+<div style="position:relative;"><!--此框只为databox定位而用 -->
+<div id='newrank_carousel'>
+    <div id='newrank_carousel_case' class='carousel slide' data-ride='carousel'>
+       <ol class='carousel-indicators'>
+         <li data-target='#newrank_carousel_case' data-slide-to='0' class='active'></li>
+         <li data-target='#newrank_carousel_case' data-slide-to='1'></li>
+         <li data-target='#newrank_carousel_case' data-slide-to='2'></li>
+         <li data-target='#newrank_carousel_case' data-slide-to='3'></li>
+       </ol>
+       <div class='carousel-inner' role='listbox'>
+          <div class='item active' id="first_case">
+             <img src="__PUBLIC__/img/overview/banner.png">
+          </div>
+          <div class='item'>
+             <img src="__PUBLIC__/img/overview/banner2.png">
+          </div>
+          <div class='item'>
+             <img src="__PUBLIC__/img/overview/banner3.png">
+          </div>
+           <div class='item'>
+             <img src="__PUBLIC__/img/overview/banner4.png">
+          </div>
+       </div>
+    </div>
+</div>
+
+<div class="newrank_databox">
+	<div class="square">
+          <div class='square_inner'> {{a}}<span>-</span>{{b}}</div>
+		  
+	</div>
+	<div class="white_square">
+		<div class="white_square_inner">
+			<div class="inner_left"> 
+			   <p class="data_character">直播时长</p>
+			   <p class="data_number">{{times}}<span>小时</span></p>
+		    </div>
+		    <div class="inner_right">
+			    <img id="rate1" src="__PUBLIC__/img/overview/icon-Upward-arrow.png">
+			    <span id="rate11">{{rate1}}</span>
+		    </div>
+		    <div class="clearfix"></div>
+		</div>
+		<div class="white_square_inner">
+			<div class="inner_left"> 
+			   <p class="data_character">直播量</p>
+			   <p class="data_number">{{duration}}<span>次</span></p>
+		    </div>
+		    <div class="inner_right">
+			    <img id="rate2" src="__PUBLIC__/img/overview/icon-Upward-arrow.png">
+			    <span id="rate22">{{rate2}}</span>
+		    </div>
+		    <div class="clearfix"></div>
+		</div>
+		<div class="white_square_inner">
+			<div class="inner_left"> 
+			   <p class="data_character">粉丝量</p>
+			   <p class="data_number">{{fans}}<span>位</span></p>
+		    </div>
+		    <div class="inner_right">
+			    <img id="rate3" src="__PUBLIC__/img/overview/icon-Upward-arrow.png">
+			    <span id="rate33">{{rate3}}</span>
+		    </div>
+		    <div class="clearfix"></div>
+		</div>
+	</div>
+</div>
+</div>
+
+<div id="ranking">
+	<div class="newrank_container">
+		<img src="__PUBLIC__/img/overview/Ranking.png">
+		<button class="newrank_more_btn"><a href="/index.php/Home/User/index.html#/list#menu">更多</a></button>  <!-- /ranknew -->
+		<div class="clearfix"></div>
+
+		<div class="ranking_charts">
+            <div class="ranking_chart first_chart">
+            	<div class="rank_title">
+            		<span class="rank_type">主播排行</span>
+            		<span class="rank_time rank_time_week" ng-click="anchorData(1)"  ng-mouseover="anchorData(1)">近一周</span><span class="rank_time">|</span><span class="rank_time rank_time_hour" ng-click="anchorData(0)"  ng-mouseover="anchorData(0)">48小时</span>
+            	</div>
+            	<table id="zhubochart1">
+            		<tr class="chart_title">
+            			<th >排名</th>
+            			<th >主播</th>
+            			<th >平台</th>
+            			<th >关注数</th>
+            		</tr>
+            		<tr ng-repeat='list in lists' >
+            			<th  data-ng-class="{'zhubo_order':  $index <3}">{{ $index +1 }}</th>
+            			<th ><span class='styleleft'><a href="#/information/{{list.room_id}}/{{list.platform}}#menu">{{list.nickname}}</a></span></th>
+            			<th >{{list.platform1}}</th>
+            			<th >{{list.avgfans}}</th>
+            		</tr>
+            		
+            	</table>
+            	<table id="zhubochart2" style="display:none;">
+            		<tr class="chart_title">
+            			<th >排名</th>
+            			<th >主播</th>
+            			<th >平台</th>
+            			<th >关注数</th>
+            		</tr>
+            		<tr ng-repeat='list in anotherlists' >
+            			<th data-ng-class="{'zhubo_order':  $index <3}">{{ $index +1 }}</th>
+            			<th ><span class='styleleft'><a href="#/information/{{list.room_id}}/{{list.platform}}#menu">{{list.nickname}}</a></span></th>
+            			<th >{{list.platform1}}</th>
+            			<th >{{list.avgfans}}</th>
+            		</tr>
+            		
+            	</table>
+            </div>
+            <div class="chart_cut_off"></div>
+             <div class="ranking_chart second_chart">
+            	<div class="rank_title">
+            		<span class="rank_type">分类排行</span>
+            		<span class="rank_time rank_time_week"  ng-click="sortData(1)" ng-mouseover="sortData(1)">近一周</span><span class="rank_time">|</span><span class="rank_time rank_time_hour" ng-click="sortData(0)" ng-mouseover="sortData(0)">48小时</span>
+            	</div>
+            	<table id="fenleichart1">
+            		<tr class="chart_title">
+            			<th >排名</th>
+            			<th >分类</th>
+            			<th >粉丝数</th>
+            		</tr>
+            		<tr ng-repeat='list in sorts'>
+            			<th data-ng-class="{'zhubo_order':  $index <3}">{{ $index +1 }}</th>
+            			<th >{{list.sort}}</th>
+            			<th ><span class='styleleft'>{{list.total}}</span></th>
+            		</tr>
+            		
+            	</table>
+            	<table id="fenleichart2" style="display:none;">
+            		<tr class="chart_title">
+            			<th >排名</th>
+            			<th >分类</th>
+            			<th >粉丝数</th>
+            		</tr>
+            		<tr ng-repeat='list in anothersorts'>
+            			<th data-ng-class="{'zhubo_order': $index <3}">{{ $index +1 }}</th>
+            			<th >{{list.sort}}</th>
+            			<th ><span class='styleleft'>{{list.total}}</span></th>
+            		</tr>
+            			
+            	</table>
+            </div>
+            <div class="chart_cut_off"></div>
+            <div class="ranking_chart third_chart">
+            	<div class="rank_title">
+            		<span class="rank_type">平台排行</span>
+            		<span class="rank_time rank_time_week" ng-click="platformData(1)" ng-mouseover="platformData(1)">近一周</span><span class="rank_time">|</span><span class="rank_time rank_time_hour" ng-click="platformData(0)"  ng-mouseover="platformData(0)">48小时</span>
+            	</div>
+            	<table id="pingtaichart1">
+            		<tr class="chart_title">
+            			<th >排名</th>
+            			<th >平台</th>
+            			<th >粉丝数</th>
+            		</tr>
+            		<tr ng-repeat='list in platforms1'>
+            			<th  data-ng-class="{'zhubo_order':  $index <3}">{{ $index +1 }}</th>
+            			<th ><span  class='styleleft1'>{{list.platform}}</span></th>
+            			<th ><span  class='styleleft'>{{list.total}}</span></th>
+            		</tr>
+            		
+            	</table>
+            	<table id="pingtaichart2" style="display:none;">
+            		<tr class="chart_title">
+            			<th >排名</th>
+            			<th >平台</th>
+            			<th >粉丝数</th>
+            		</tr>
+            		<tr ng-repeat='list in anotherplatforms1' >
+            			<th data-ng-class="{'zhubo_order':  $index <3}">{{ $index +1 }}</th>
+            			<th ><span  class='styleleft1'>{{list.platform}}</span></th>
+            			<th ><span  class='styleleft'>{{list.total}}</span></th>
+            		</tr>
+            		
+            	</table>
+            </div>
+		</div>
+
+	</div>
+</div>
+
+<div id="advertisement">
+	<div class="newrank_container">
+		<img src="__PUBLIC__/img/overview/Advertisement.png">
+		<button class="newrank_more_btn"><a href="/index.php/Home/User/index.html#/advertisement#menu">更多</a></button>
+		<div class="ad_boxes">
+			<div class="ad_box">
+			    <div class="ad_img">
+				    <img src="__PUBLIC__/img/overview/image1.png">
+				    <div class="ad_discribe">
+					   <div>穿一件新旗袍</div>
+				    </div>
+				</div>
+				<div class="ad_limit">
+					<p class="ad_price">￥3000.00</p>
+					<p class="ad_time">竞标时间截止6月10日</p>
+				</div>
+			</div>
+			<div class="ad_box">
+			    <div class="ad_img">
+				    <img src="__PUBLIC__/img/overview/image2.png">
+				    <div class="ad_discribe">
+					   <div>BABY IT IS FOR LONDON</div>
+				    </div> 
+				</div>
+				<div class="ad_limit">
+					<p class="ad_price">￥3000.00</p>
+					<p class="ad_time">竞标时间截止6月10日</p>
+				</div>
+			</div>
+			<div class="ad_box" style="margin-right:0px;">
+			    <div class="ad_img">
+				    <img src="__PUBLIC__/img/overview/image3.png">
+				     <div class="ad_discribe">
+					   <div>INDIGO OF WORLD</div>
+				    </div>
+				</div>
+				<div class="ad_limit">
+					<p class="ad_price">￥3000.00</p>
+					<p class="ad_time">竞标时间截止6月10日</p>
+				</div>
+			</div>
+			<div class="ad_box">
+			    <div class="ad_img"> 
+				    <img src="__PUBLIC__/img/overview/image4.png">
+				     <div class="ad_discribe">
+					   <div>够man，才够味</div>
+				    </div> 
+				</div>
+				<div class="ad_limit">
+					<p class="ad_price">￥3000.00</p>
+					<p class="ad_time">竞标时间截止6月10日</p>
+				</div>
+			</div>
+			<div class="ad_box">
+			    <div class="ad_img">
+				    <img src="__PUBLIC__/img/overview/image5.png">
+				      <div class="ad_discribe">
+					   <div>OLD NAVY</div>
+				    </div>
+				</div>
+				<div class="ad_limit">
+					<p class="ad_price">￥3000.00</p>
+					<p class="ad_time">竞标时间截止6月10日</p>
+				</div>
+			</div>
+			<div class="ad_box" style="margin-right:0px;">
+			    <div class="ad_img">
+				    <img src="__PUBLIC__/img/overview/image6.png">
+				       <div class="ad_discribe">
+					   <div>2016 Summer Collection DOYS</div>
+				    </div>
+				</div>
+				<div class="ad_limit">
+					<p class="ad_price">￥3000.00</p>
+					<p class="ad_time">竞标时间截止6月10日</p>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+
+<div id="cooperation">
+    <div class="newrank_container">
+    	<img class='cooperation_img' src="__PUBLIC__/img/overview/Cooperation.png">
+    	<!-- <button class="newrank_more_btn"><a>更多</a></button> -->
+    	<div class="cooperation_images">
+    		<a href="http://www.bilibili.com" target="_blank"><img src="__PUBLIC__/img/logo/1.png"></a>
+    		<a href="http://www.douyu.com/" target="_blank"><img src="__PUBLIC__/img/logo/2.png"></a>
+    		<a href="http://www.6.cn/" target="_blank"><img src="__PUBLIC__/img/logo/3.png"></a>
+    		<a href="http://www.huya.com/" target="_blank"><img src="__PUBLIC__/img/logo/huya.png"></a>
+    		<a href="http://www.yy.com/" target="_blank"><img src="__PUBLIC__/img/logo/5.png" style="margin-right:0px;"></a>
+    		<a href="http://www.laifeng.com/" target="_blank"><img src="__PUBLIC__/img/logo/6.png"></a>
+    		<a href="http://www.panda.tv/" target="_blank"><img src="__PUBLIC__/img/logo/7.png"></a>
+    		<a href="http://www.longzhu.com/" target="_blank"><img src="__PUBLIC__/img/logo/8.png"></a>
+    		<a href="http://www.ingkee.com/" target="_blank"><img src="__PUBLIC__/img/logo/9.png"></a>
+    		<a href="http://www.huajiao.com/" target="_blank"><img src="__PUBLIC__/img/logo/10.png" style="margin-right:0px;"></a>
+    	</div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+	$('#newrank_carousel_case').carousel();
+    
+	
+</script>
+
